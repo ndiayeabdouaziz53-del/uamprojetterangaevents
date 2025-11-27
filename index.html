@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teranga Events - Organisation d'événements au Sénégal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --green-primary: #2E8B57;
+            --gold-accent: #D4AF37;
+            --cream-bg: #FFF8E1;
+            --dark-text: #2D2D2D;
+            --light-gray: #f5f5f5;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--green-primary), #1a5c37);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23D4AF37" stroke-width="1" opacity="0.1"/></svg>');
+            background-size: 40px 40px;
+        }
+        
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .logo span {
+            color: var(--gold-accent);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            margin-top: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(46, 139, 87, 0.9), rgba(26, 92, 55, 0.85)), url('https://images.unsplash.com/photo-1519741497676-54f94a79aa80?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gold-accent);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold-accent);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-primary {
+            background: var(--gold-accent);
+            color: var(--dark-text);
+        }
+        
+        .btn-primary:hover {
+            background: white;
+            color: var(--green-primary);
+        }
+        
+        .section {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--green-primary);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gold-accent);
+            border-radius: 2px;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--gold-accent);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .booking-form {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--cream-bg), white);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark-text);
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .radio-option input {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .package {
+            background: white;
+            border: 2px solid var(--green-primary);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .package:hover, .package.active {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.3);
+            background: var(--green-primary);
+            color: white;
+        }
+        
+        .package h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--green-primary);
+        }
+        
+        .package.active h4 {
+            color: white;
+        }
+        
+        .package ul {
+            list-style: none;
+            margin: 15px 0;
+            text-align: left;
+        }
+        
+        .package li {
+            margin: 8px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .package li::before {
+            content: "✓";
+            color: var(--gold-accent);
+            position: absolute;
+            left: 0;
+        }
+        
+        .package .price {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--gold-accent);
+            margin-top: 15px;
+        }
+        
+        .package.active .price {
+            color: white;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        footer {
+            background: var(--green-primary);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item i {
+            color: var(--gold-accent);
+            font-size: 1.3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .booking-form {
+                padding: 25px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">TERANGA <span>EVENTS</span></div>
+            <div class="tagline">La sérénité pour chaque célébration</div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>L'Art de Célébrer au Cœur du Sénégal</h1>
+        <p>Au Sénégal, célébrer est un véritable art de vivre. Les mariages, baptêmes, et fêtes religieuses constituent le ciment de notre société.</p>
+        <a href="#booking" class="btn btn-primary">Réserver Maintenant</a>
+    </div>
+
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tent"></i>
+                    </div>
+                    <h3>Location de Bâches & Tentes</h3>
+                    <p>Des structures robustes et élégantes pour protéger vos invités quelles que soient les conditions météorologiques.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3>Location de Chaises VIP & Standard</h3>
+                    <p>Un large choix de chaises confortables pour s'adapter à tous vos besoins et budgets.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Décoration & Nettoyage</h3>
+                    <p>Services complets de décoration et nettoyage pour vous offrir une expérience sans stress.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="booking">
+            <h2 class="section-title">Réservez Votre Événement</h2>
+            <div class="booking-form">
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label for="name">Nom Complet*</label>
+                        <input type="text" id="name" class="form-control" required placeholder="Entrez votre nom complet">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Numéro de Téléphone*</label>
+                        <input type="tel" id="phone" class="form-control" required placeholder="Entrez votre numéro de téléphone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" class="form-control" required placeholder="Entrez votre adresse email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventDate">Date de l'Événement*</label>
+                        <input type="date" id="eventDate" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Type d'Événement*</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="mariage" name="eventType" value="Mariage" required>
+                                <label for="mariage">Mariage</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="bapteme" name="eventType" value="Baptême">
+                                <label for="bapteme">Baptême</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="anniversaire" name="eventType" value="Anniversaire">
+                                <label for="anniversaire">Anniversaire</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="religieux" name="eventType" value="Événement Religieux">
+                                <label for="religieux">Religieux</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="culturel" name="eventType" value="Événement Culturel">
+                                <label for="culturel">Culturel</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Formule Souhaitée*</label>
+                        <div class="packages">
+                            <div class="package" onclick="selectPackage(this)">
+                                <h4>Formule Éco</h4>
+                                <ul>
+                                    <li>Bâches simples</li>
+                                    <li>Chaises standard</li>
+                                    <li>Service de base</li>
+                                </ul>
+                                <div class="price">À partir de 50 000 FCFA</div>
+                            </div>
+                            <div class="package" onclick="selectPackage(this)">
+                                <h4>Formule Standard</h4>
+                                <ul>
+                                    <li>Bâches standard</li>
+                                    <li>Chaises confortables</li>
+                                    <li>Décoration de base</li>
+                                </ul>
+                                <div class="price">À partir de 150 000 FCFA</div>
+                            </div>
+                            <div class="package" onclick="selectPackage(this)">
+                                <h4>Formule Complète</h4>
+                                <ul>
+                                    <li>Tentes VIP</li>
+                                    <li>Chaises de luxe</li>
+                                    <li>Décoration complète</li>
+                                    <li>Nettoyage inclus</li>
+                                </ul>
+                                <div class="price">À partir de 300 000 FCFA</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="selectedPackage" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Nombre d'Invités Estimé*</label>
+                        <input type="number" id="guests" class="form-control" required min="10" placeholder="Nombre d'invités">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Lieu de l'Événement*</label>
+                        <input type="text" id="location" class="form-control" required placeholder="Entrez l'adresse ou le quartier">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message Spécial (Facultatif)</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Détails supplémentaires sur votre événement..."></textarea>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">Confirmer la Réservation</button>
+                    </div>
+                    
+                    <div class="success-message" id="successMessage">
+                        <h3><i class="fas fa-check-circle"></i> Réservation Confirmée !</h3>
+                        <p>Merci pour votre confiance ! Nous avons bien reçu votre commande et vous contacterons très prochainement pour finaliser les détails. Votre tranquillité d'esprit commence maintenant.</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h3>Teranga Events</h3>
+            <p>La sérénité pour chaque célébration</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@terangaevents.sn</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <span>www.terangaevents.sn</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+221 XX XXX XX XX</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; opacity: 0.8;">Projet académique présenté par des étudiants de l'Université Amadou Mahtar Mbow</p>
+        </div>
+    </footer>
+
+    <script>
+        function selectPackage(element) {
+            // Remove active class from all packages
+            document.querySelectorAll('.package').forEach(pkg => {
+                pkg.classList.remove('active');
+            });
+            
+            // Add active class to clicked package
+            element.classList.add('active');
+            
+            // Get package name and set it to hidden input
+            const packageName = element.querySelector('h4').textContent;
+            document.getElementById('selectedPackage').value = packageName;
+        }
+
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const eventDate = document.getElementById('eventDate').value;
+            const eventType = document.querySelector('input[name="eventType"]:checked').value;
+            const packageType = document.getElementById('selectedPackage').value;
+            const guests = document.getElementById('guests').value;
+            const location = document.getElementById('location').value;
+            const message = document.getElementById('message').value || 'Aucun message supplémentaire';
+            
+            // Format the email content
+            const subject = `Nouvelle Réservation - ${eventType} - ${eventDate}`;
+            const body = `
+Nouvelle réservation reçue sur Teranga Events:
+
+INFORMATIONS CLIENT:
+Nom: ${name}
+Téléphone: ${phone}
+Email: ${email}
+
+DÉTAILS DE L'ÉVÉNEMENT:
+Type d'événement: ${eventType}
+Date: ${new Date(eventDate).toLocaleDateString('fr-FR')}
+Lieu: ${location}
+Nombre d'invités: ${guests}
+
+FORMULE CHOISIE:
+${packageType}
+
+MESSAGE SPÉCIAL:
+${message}
+
+---
+Cette réservation a été effectuée via le site web Teranga Events.
+            `;
+            
+            // Open email client with pre-filled content
+            window.location.href = `mailto:ndiayeabdouaziz53@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({behavior: 'smooth'});
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                document.getElementById('eventForm').reset();
+                document.querySelectorAll('.package').forEach(pkg => {
+                    pkg.classList.remove('active');
+                });
+                document.getElementById('selectedPackage').value = '';
+            }, 3000);
+        });
+
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('eventDate').setAttribute('min', today);
+        });
+    </script>
+</body>
+</html>
